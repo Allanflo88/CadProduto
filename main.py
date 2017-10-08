@@ -4,7 +4,7 @@ produtos = []
 c = 0
 while(1):
     c += 1
-    print("Escreva exit para sair"))
+    print("Escreva exit para sair")
     descr = input("Descricao: ")
     if descr == "exit":
         break
@@ -12,7 +12,7 @@ while(1):
     produtos.append(model.produto(c,descr, price))
 
 
-c -= 1
-while(c >= 0):
-    print(produtos[c].getDescr())
-    c -= 1
+print("Descricao" + "   " + "Valor Unitario")
+for c in range(len(produtos)):
+    print(str(produtos[c].getDescr()) + '   ' + str(produtos[c].getValUni()))
+    c += 1

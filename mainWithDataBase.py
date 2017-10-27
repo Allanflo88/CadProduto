@@ -41,7 +41,7 @@ for i in range(totProd):
     except:
         sql_erro = """insert into erros(erro) values('Erro na inserção')"""
         cursor.execute(sql_erro)
-        con.commit
+        con.commit()
 
 sql_select = "select * from produto"
 
@@ -62,6 +62,6 @@ try:
 except:
     sql_erro = """insert into erros(erro) values('Erro na leitura')"""
     cursor.execute(sql_erro)
-    con.commit
+    con.commit()
 
 con.close()

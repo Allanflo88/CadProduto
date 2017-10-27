@@ -4,6 +4,8 @@
 import MySQLdb
 import model
 
+
+produtos = []
 con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16",db="Testes")
 cursor = con.cursor()
 
@@ -47,12 +49,16 @@ try:
     cursor.execute(sql_select)
     results = cursor.fetchall()
     print("{0} {1:10} {2} {3}".format('Codigo', 'Descricao', 'Valor', 'Quantidade'))
+
     for row in results:
         cod = row[0]
         descricao = row[1]
         valor = row[2]
         qtde = row[3]
-        print("{0:5} {1:10} {2:5} {3:5}".format(cod, descricao, valor, qtde))
+        produtos.append(model.produto(cod, descricao, valor, qtde))
+    c = 0
+    for c in range(len(produtos)):
+        print("{0:5} {1:10} {2:5} {3:5}".format(produtos[c].getCodigo(), produtos[c].getDescr(), produtos[c].getValUni(), produtos[c].getQtd()))
 except:
     sql_erro = """insert into erros(erro) values('Erro na leitura')"""
     cursor.execute(sql_erro)

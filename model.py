@@ -5,6 +5,12 @@ class produto:
         self.__valUni = valUni
         self.__qtd = 0
 
+    def __init__(self, codigo, descr, valUni,qtd):
+        self.__codigo = codigo
+        self.__descr = descr
+        self.__valUni = valUni
+        self.__qtd = qtd
+
     def setCodigo(self,codigo):
         self.__codigo = codigo
     def setDescr(self, descr):

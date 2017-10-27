@@ -6,6 +6,21 @@ import model
 
 con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16",db="Testes")
 cursor = con.cursor()
+
+x = int(input("deseja criar Banco de dados? 1 - sim ou 2 - não "))
+if x == 1:
+    cursor.execute("drop table if exists produto")
+
+    sql = """create table produto(cod int auto_increment primary key,descr varchar(20) not null,valUni float(5) not null,qtd int);"""
+
+    cursor.execute(sql)
+
+    cursor.execute("drop table if exists erros")
+
+    sql = """create table erros(id int auto_increment primary key,erro varchar(20) not null);;"""
+
+    cursor.execute(sql)
+
 descr = ""
 valUni = 0.00
 qtd = 0

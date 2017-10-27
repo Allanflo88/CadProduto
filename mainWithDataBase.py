@@ -6,7 +6,7 @@ import model
 
 
 produtos = []
-con = MySQLdb.connect(host="localhost",user="localuser",passwd="msLs987654.")
+con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16",db="Testes")
 
 cursor = con.cursor()
 

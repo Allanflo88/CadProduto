@@ -1,23 +1,23 @@
 class produto:
     def __init__(self, codigo, descr, valUni):
-        self.codigo = codigo
-        self.descr = descr
-        self.valUni = valUni
-        self.qtd = 0
+        self.__codigo = codigo
+        self.__descr = descr
+        self.__valUni = valUni
+        self.__qtd = 0
 
     def setCodigo(self,codigo):
-        self.codigo = codigo
+        self.__codigo = codigo
     def setDescr(self, descr):
-        self.descr = descr
+        self.__descr = descr
     def setValUni(self, valUni):
-        self.valUni = valUni
+        self.__valUni = valUni
     def setQtd(self, qtd):
-        self.qtd = qtd
+        self.__qtd = qtd
     def getCodigo(self):
-        return self.codigo
+        return self.__codigo
     def getDescr(self):
-        return self.descr
+        return self.__descr
     def getValUni(self):
-        return self.valUni
+        return self.__valUni
     def getQtd(self):
-        return self.qtd
+        return self.__qtd

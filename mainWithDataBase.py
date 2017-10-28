@@ -6,11 +6,16 @@ import model
 
 
 produtos = []
-con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16",db="Testes")
+con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16")
+
 cursor = con.cursor()
 
-x = int(input("deseja criar Banco de dados? 1 - sim ou 2 - não "))
+x = int(input("deseja (re)criar Banco de dados? 1 - sim ou 2 - não "))
 if x == 1:
+    cursor.execute("drop database if exists Testes")
+    cursor.execute("create database Testes")
+    cursor.execute("use Testes")
+
     cursor.execute("drop table if exists produto")
 
     sql = """create table produto(cod int auto_increment primary key,descr varchar(20) not null,valUni float(5) not null,qtd int);"""

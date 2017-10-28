@@ -4,7 +4,7 @@
 import MySQLdb
 import model
 import time
-from datetime import datetime, date, time
+from datetime import datetime, date, time, timedelta
 
 vendas = []
 produtos = []
@@ -52,6 +52,7 @@ while(1):
     now = datetime.now()
     item = int(input("Código Item:"))
     quantidade = int(input("Quantidade: "))
+    print("Total compra: R$ {0}".format(float(produtos[item - 1].getValUni()) * quantidade))
     try:
         sql = """insert into vendas(data, codprod, qtd) values('{0}', '{1}', '{2}')""".format(now.strftime('%Y-%m-%d %H:%M:%S'), item, quantidade)
         cursor.execute(sql)
@@ -61,7 +62,7 @@ while(1):
         cursor.execute(sql_erro)
         con.commit()
 
-sql_select = "select codprod, sum(qtd) from vendas group by codprod;"
+sql_select = "select codprod, sum(qtd) from vendas where data between '{0}' and '{1}' group by codprod;".format(now.strftime('%Y-%m-%d'),(now + timedelta(days=1)).strftime('%Y-%m-%d'))
 try:
     cursor.execute(sql_select)
     results_total = cursor.fetchall()
@@ -72,7 +73,7 @@ try:
         vendas.append(model.totalVenda(cod, total))
 
 except:
-    sql_erro = """insert into erros(erro) values('Erro na leitura da tabela vendas')"""
+    sql_erro = """insert into erros(erro) values('Erro na leitura')"""
     cursor.execute(sql_erro)
     con.commit()
 for c in range(len(vendas)):

@@ -7,7 +7,6 @@ import model
 
 produtos = []
 con = MySQLdb.connect(host="localhost",user="root",passwd="Andreia16")
-
 cursor = con.cursor()
 
 x = int(input("deseja (re)criar Banco de dados? 1 - sim ou 2 - não "))
@@ -27,6 +26,8 @@ if x == 1:
     sql = """create table erros(id int auto_increment primary key,erro varchar(20) not null);;"""
 
     cursor.execute(sql)
+else:
+    cursor.execute("use Testes")
 
 descr = ""
 valUni = 0.00
